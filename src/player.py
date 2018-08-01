@@ -2,6 +2,7 @@ import pygame
 
 from bunny import Bunny
 from bush import Bush
+from dead_wolf import DeadWolf
 from drawer import Drawer
 from land import Land
 from controller import Controller
@@ -42,26 +43,9 @@ class Player:
 
     def small_setup(self):
 
-        bunny = Wolf(0, 20)
-        self.controller.put(bunny)
-
-        bunny = Wolf(8, 30)
-        self.controller.put(bunny)
-
-        bunny = Bunny(1, 20)
-        self.controller.put(bunny)
-
-        bunny = Bunny(2, 20)
-        self.controller.put(bunny)
-
-        bunny = Bunny(3, 20)
-        self.controller.put(bunny)
-
-        bunny = Bunny(8, 20)
-        self.controller.put(bunny)
-
-        bunny = Bunny(8, 25)
-        self.controller.put(bunny)
+        self.controller.put(DeadWolf(20, 20))
+        self.controller.put(Bush(21, 20))
+        self.controller.put(Bush(19, 20))
 
     def play(self):
         # Loop until the user clicks the close button.

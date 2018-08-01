@@ -11,7 +11,7 @@ class Awareness:
         list_of_things = []
 
         for tile in self.immediate:
-            if type(tile) is type_of_thing:
+            if type(tile) is type_of_thing or issubclass(type(tile), type_of_thing):
                 list_of_things.append(tile)
 
         if len(list_of_things) > 0:

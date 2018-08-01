@@ -1,3 +1,4 @@
+from dead_animal import DeadAnimal
 from dead_bunny import DeadBunny
 from dead_bush import DeadBush
 from emptyspace import EmptySpace
@@ -48,9 +49,9 @@ class Bush(Life):
             self.increase_sun()
 
         dead_bush = self.awareness.inner_get(DeadBush)
-        dead_bunny = self.awareness.inner_get(DeadBunny)
+        dead_animal = self.awareness.inner_get(DeadAnimal)
 
-        if has_empty and plant_counter < 4 and (self.sun >= self.sun_cap or ((dead_bunny is not None or
+        if has_empty and plant_counter < 4 and (self.sun >= self.sun_cap or ((dead_animal is not None or
                                                 dead_bush is not None) and self.sun >= self.sun_cap / 2)):
             rand_empty_space = choice(empty_spots)
             self.sun = 0

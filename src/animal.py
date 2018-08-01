@@ -170,6 +170,7 @@ class Animal(Life, metaclass=ABCMeta):
         return self.laze_about()
 
     def laze_about(self):
+        return None
         empty = self.awareness.inner_get(EmptySpace)
         return empty
 
