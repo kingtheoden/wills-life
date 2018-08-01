@@ -4,11 +4,11 @@ from life import Life
 
 class DeadBunny(Life):
 
-    def __init__(self, x, y, land):
+    def __init__(self, x, y):
         self.death_counter = 0
         self.death_cap = 350
 
-        Life.__init__(self, x, y, land)
+        Life.__init__(self, x, y)
 
     def propagate(self):
         pass

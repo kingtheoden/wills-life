@@ -7,12 +7,12 @@ from random import randint, choice
 
 class Bush(Life):
 
-    def __init__(self, x, y, land):
+    def __init__(self, x, y):
         self.sun = 0
         self.sun_cap = 100 + randint(0, 100)
         self.death_counter = 0
         self.death_cap = 200
-        Life.__init__(self, x, y, land)
+        Life.__init__(self, x, y)
 
     def get_ticks_per_move(self):
         return 1
@@ -54,7 +54,7 @@ class Bush(Life):
                                                 dead_bush is not None) and self.sun >= self.sun_cap / 2)):
             rand_empty_space = choice(empty_spots)
             self.sun = 0
-            return Bush(rand_empty_space.pos_x, rand_empty_space.pos_y, self.land)
+            return Bush(rand_empty_space.pos_x, rand_empty_space.pos_y)
         else:
             return None
 
@@ -65,7 +65,7 @@ class Bush(Life):
         :return: boolean
         """
         if self.death_counter >= self.death_cap:
-            return DeadBush(self.pos_x, self.pos_y, self.land)
+            return DeadBush(self.pos_x, self.pos_y)
         else:
             return None
 

@@ -18,11 +18,11 @@ class Wolf(Animal):
     def get_eat_thresh(self):
         return 25 * self.get_ticks_per_move()
 
-    def __init__(self, x, y, land):
-        Animal.__init__(self, x, y, land)
+    def __init__(self, x, y):
+        Animal.__init__(self, x, y)
 
     def get_dead_animal(self):
-        return DeadWolf(self.pos_x, self.pos_y, self.land)
+        return DeadWolf(self.pos_x, self.pos_y)
 
     def get_death_age(self):
         return 2000 * self.get_ticks_per_move()
@@ -43,7 +43,7 @@ class Wolf(Animal):
         return self.BLUE
 
     def get_animal(self, x, y):
-        return Wolf(x, y, self.land)
+        return Wolf(x, y)
 
     def get_prey(self):
         return Bunny

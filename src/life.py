@@ -7,9 +7,9 @@ from void import VoidSpace
 
 class Life(Thing, metaclass=ABCMeta):
 
-    def __init__(self, x, y, land):
+    def __init__(self, x, y):
         self.awareness = Awareness()
-        self.land = land
+        self.land = None
         Thing.__init__(self, x, y)
 
     @abstractmethod

@@ -6,7 +6,7 @@ from life import Life
 
 
 class Animal(Life, metaclass=ABCMeta):
-    def __init__(self, x, y, land):
+    def __init__(self, x, y):
 
         self.sees_prey = False  # Must come before self.get() methods to properly define thresholds
 
@@ -22,7 +22,7 @@ class Animal(Life, metaclass=ABCMeta):
         self.eat_thresh = self.get_eat_thresh()
         self.move_counter = randint(0, self.get_ticks_per_move() - 1)
 
-        Life.__init__(self, x, y, land)
+        Life.__init__(self, x, y)
 
     @abstractmethod
     def get_dead_animal(self):

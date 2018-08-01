@@ -38,6 +38,8 @@ class Controller:
         self.drawer.update([thing1, thing2])
 
     def put(self, thing):
+        if issubclass(type(thing), Life):
+            thing.land = self.land
         self.land.put(thing, thing.pos_x, thing.pos_y)
 
         if issubclass(type(thing), Life):

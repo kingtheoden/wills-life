@@ -29,38 +29,38 @@ class Player:
 
                 num = random()
                 if num < 0.01:  # 1% bunnies
-                    thing = Bunny(x, y, self.land)
+                    thing = Bunny(x, y)
                     self.controller.put(thing)
                 elif num < 0.015:  # 0.5% wolves
-                    thing = Wolf(x, y, self.land)
+                    thing = Wolf(x, y)
                     self.controller.put(thing)
                 elif num < 0.35:  # 30% bushes
-                    thing = Bush(x, y, self.land)
+                    thing = Bush(x, y)
                     self.controller.put(thing)
                 else:  # 60% empty space
                     pass  # and 100% reason to remember the name <---- joke comment, disregard
 
     def small_setup(self):
 
-        bunny = Wolf(0, 20, self.land)
+        bunny = Wolf(0, 20)
         self.controller.put(bunny)
 
-        bunny = Wolf(8, 30, self.land)
+        bunny = Wolf(8, 30)
         self.controller.put(bunny)
 
-        bunny = Bunny(1, 20, self.land)
+        bunny = Bunny(1, 20)
         self.controller.put(bunny)
 
-        bunny = Bunny(2, 20, self.land)
+        bunny = Bunny(2, 20)
         self.controller.put(bunny)
 
-        bunny = Bunny(3, 20, self.land)
+        bunny = Bunny(3, 20)
         self.controller.put(bunny)
 
-        bunny = Bunny(8, 20, self.land)
+        bunny = Bunny(8, 20)
         self.controller.put(bunny)
 
-        bunny = Bunny(8, 25, self.land)
+        bunny = Bunny(8, 25)
         self.controller.put(bunny)
 
     def play(self):

@@ -4,12 +4,12 @@ from life import Life
 
 class DeadBush(Life):
 
-    def __init__(self, x, y, land):
+    def __init__(self, x, y):
         self.death_counter = 0
         self.death_cap = 350
         self.alone = False
 
-        Life.__init__(self, x, y, land)
+        Life.__init__(self, x, y)
 
     def get_ticks_per_move(self):
         return 1
