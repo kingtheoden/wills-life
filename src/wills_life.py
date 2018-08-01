@@ -3,7 +3,7 @@ from player import Player
 
 def main():
     player = Player()
-    player.small_setup()
+    player.random_setup()
     player.play()
 
 

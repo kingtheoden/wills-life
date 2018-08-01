@@ -1,5 +1,4 @@
 from dead_animal import DeadAnimal
-from dead_bunny import DeadBunny
 from dead_bush import DeadBush
 from emptyspace import EmptySpace
 from life import Life
@@ -9,7 +8,7 @@ from random import randint, choice
 class Bush(Life):
 
     def __init__(self, x, y):
-        self.sun = 0
+        self.sun = randint(0, 99)
         self.sun_cap = 100 + randint(0, 100)
         self.death_counter = 0
         self.death_cap = 200
