@@ -7,6 +7,7 @@ from drawer import Drawer
 from land import Land
 from controller import Controller
 from random import random
+from time import time
 
 # Set the initial specs
 from wolf import Wolf
@@ -14,8 +15,8 @@ from wolf import Wolf
 
 class Player:
     def __init__(self):
-        self.game_size = 100
-        self.ticks_per_second = 60
+        self.game_size = 50
+        self.ticks_per_second = 120
 
         screen_size_x = 800
         screen_size_y = 800
@@ -32,10 +33,10 @@ class Player:
                 if num < 0.01:  # 1% bunnies
                     thing = Bunny(x, y)
                     self.controller.put(thing)
-                elif num < 0.015:  # 0.5% wolves
+                elif num < 0.013:  # 0.3% wolves
                     thing = Wolf(x, y)
                     self.controller.put(thing)
-                elif num < 0.35:  # 30% bushes
+                elif num < 0.315:  # 30% bushes
                     thing = Bush(x, y)
                     self.controller.put(thing)
                 else:  # 60% empty space
@@ -43,9 +44,12 @@ class Player:
 
     def small_setup(self):
 
-        self.controller.put(DeadWolf(20, 20))
-        self.controller.put(Bush(21, 20))
-        self.controller.put(Bush(19, 20))
+        self.controller.put(Wolf(20, 20))
+        self.controller.put(Bunny(19, 20))
+        self.controller.put(Bunny(22, 20))
+        self.controller.put(Bunny(21, 19))
+        self.controller.put(Bunny(21, 23))
+        self.controller.put(Bunny(21, 22))
 
     def play(self):
         # Loop until the user clicks the close button.
@@ -56,6 +60,7 @@ class Player:
         self.drawer.draw(self.controller.land)  # draw the entire canvas
 
         tick_count = 0
+        start_time = time()
 
         while not done:
 
@@ -67,14 +72,18 @@ class Player:
 
             tick_count += 1
 
+            #if tick_count % self.ticks_per_second == 0:
+                #end_time = time()
+                #print(end_time - start_time)
+                #start_time = end_time
+
             if not pause:
                 self.controller.tick()
                 # controller.print_tmi()
                 # print(tick_count)
                 # print()
 
-            # This limits the while loop to a max of 60 times per second.
-            # Leave this out and we will use all CPU we can.
+            # This limits the while loop to a max amount of ticks per second.
             clock.tick(self.ticks_per_second)
 
         # Be IDLE friendly

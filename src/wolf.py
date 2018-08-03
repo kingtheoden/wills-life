@@ -13,10 +13,16 @@ class Wolf(Animal):
         return thing is EmptySpace or thing is Bush or thing is DeadBunny or thing is DeadBush or thing is DeadWolf
 
     def get_hunger_thresh(self):
-        return 300 * self.get_ticks_per_move()
+        if self.sees_lots_of_prey:
+            return 25 * self.get_ticks_per_move()
+        else:
+            return 150 * self.get_ticks_per_move()
 
     def get_eat_thresh(self):
-        return 25 * self.get_ticks_per_move()
+        if self.sees_lots_of_prey:
+            return 5 * self.get_ticks_per_move()
+        else:
+            return 40 * self.get_ticks_per_move()
 
     def __init__(self, x, y):
         Animal.__init__(self, x, y)
@@ -25,13 +31,13 @@ class Wolf(Animal):
         return DeadWolf(self.pos_x, self.pos_y)
 
     def get_death_age(self):
-        return 2000 * self.get_ticks_per_move()
+        return 1000 * self.get_ticks_per_move()
 
     def get_hunger_death(self):
         return 400 * self.get_ticks_per_move()
 
     def get_vision(self):
-        return 6
+        return 10
 
     def get_ticks_per_move(self):
         if self.sees_prey:

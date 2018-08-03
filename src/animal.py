@@ -9,6 +9,7 @@ class Animal(Life, metaclass=ABCMeta):
     def __init__(self, x, y):
 
         self.sees_prey = False  # Must come before self.get() methods to properly define thresholds
+        self.sees_lots_of_prey = False
 
         self.age = 0
         self.hunger = 0
@@ -18,8 +19,6 @@ class Animal(Life, metaclass=ABCMeta):
         self.meals_since_procreation = 0
         self.death_age = self.get_death_age()
         self.hunger_death = self.get_hunger_death()
-        self.hunger_thresh = self.get_hunger_thresh()
-        self.eat_thresh = self.get_eat_thresh()
         self.move_counter = randint(0, self.get_ticks_per_move() - 1)
 
         Life.__init__(self, x, y)
@@ -72,10 +71,10 @@ class Animal(Life, metaclass=ABCMeta):
         self.age = Life.increase(self.age, self.death_age)
         self.hunger = Life.increase(self.hunger, self.hunger_death)
 
-        if self.hunger > self.eat_thresh:
+        if self.hunger > self.get_eat_thresh():
             self.could_eat = True
 
-        if self.hunger > self.hunger_thresh:
+        if self.hunger > self.get_hunger_thresh():
             self.is_hungry = True
 
         if self.age >= self.death_age:
@@ -105,6 +104,8 @@ class Animal(Life, metaclass=ABCMeta):
         self.get_awareness(self.land)
 
         self.sees_prey = False
+        num_of_prey = self.awareness.count_in_awareness(self.get_prey())
+        self.sees_lots_of_prey = num_of_prey > self.get_vision()
 
         if self.is_hungry:
             move = self.hungry_move()
@@ -172,4 +173,3 @@ class Animal(Life, metaclass=ABCMeta):
     def laze_about(self):
         empty = self.awareness.inner_get(EmptySpace)
         return empty
-
