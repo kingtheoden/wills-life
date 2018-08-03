@@ -2,7 +2,6 @@ import pygame
 
 from bunny import Bunny
 from bush import Bush
-from dead_wolf import DeadWolf
 from drawer import Drawer
 from land import Land
 from controller import Controller

@@ -59,6 +59,10 @@ class Animal(Life, metaclass=ABCMeta):
     def can_trample(self, thing):
         raise NotImplementedError
 
+    @abstractmethod
+    def sees_lots_of_prey_check(self, num_of_prey):
+        raise NotImplementedError
+
     def eat(self):
         self.meals_since_procreation = Life.increase(self.meals_since_procreation, self.get_meals_until_procreation())
         self.hunger = 0
@@ -105,7 +109,7 @@ class Animal(Life, metaclass=ABCMeta):
 
         self.sees_prey = False
         num_of_prey = self.awareness.count_in_awareness(self.get_prey())
-        self.sees_lots_of_prey = num_of_prey > self.get_vision()
+        self.sees_lots_of_prey = self.sees_lots_of_prey_check(num_of_prey)
 
         if self.is_hungry:
             move = self.hungry_move()
