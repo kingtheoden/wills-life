@@ -2,7 +2,9 @@
 A simulation of the circle of life.
 
 ## To Run
-move to the 'src' directory and enter `python3 wills_life.py`
+Move to the 'src' directory and enter `python3 wills_life.py`
+
+or use your favorite IDE (I'm using pycharm).
 
 ## Dependencies
 requires 'pygame' for visuals.
